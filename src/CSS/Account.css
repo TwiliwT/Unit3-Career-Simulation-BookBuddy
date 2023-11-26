@@ -1,3 +1,8 @@
+main > a {
+  text-align: center;
+  margin: 40%
+}
+
 .welcome-user {
   text-align: center;
 }

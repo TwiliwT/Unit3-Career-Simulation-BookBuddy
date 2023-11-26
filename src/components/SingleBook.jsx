@@ -4,20 +4,18 @@ import { getBookById } from "../API";
 import { checkoutBook } from "../API";
 import "../CSS/SingleBook.css";
 
-/* TODO - add your code to create a functional React component that renders details for a single book. Fetch the book data from the provided API. You may consider conditionally rendering a 'Checkout' button for logged in users. */
-
 export default function SingleBook({ token }) {
   const [book, setBook] = useState([]);
+  const [number, setnumber] = useState(1);
 
   const { id } = useParams();
 
   useEffect(() => {
     async function fetchBook() {
       setBook(await getBookById(id));
-      console.log(book);
     }
     fetchBook();
-  }, []);
+  }, [number]);
 
   return (
     <main>
@@ -37,7 +35,12 @@ export default function SingleBook({ token }) {
         <p className="single-book-status">{`Available: ${book.available}`}</p>
         <button
           onClick={() => {
-            checkoutBook(token, book.id);
+            if (token) {
+              checkoutBook(token, book.id);
+              setnumber(number + 1);
+            } else {
+              alert("You need to be signed in to do that.");
+            }
           }}
         >
           Checkout

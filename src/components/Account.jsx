@@ -7,6 +7,7 @@ import "../CSS/Account.css";
 
 export default function Account({ token, user, setUser }) {
   const [reservedBooks, setReservedBooks] = useState([]);
+  const [number, setnumber] = useState(1);
 
   useEffect(() => {
     async function fetchUser() {
@@ -20,7 +21,6 @@ export default function Account({ token, user, setUser }) {
     async function fetchReservedBooks() {
       try {
         setReservedBooks(await getBookReservations(token));
-        console.log(reservedBooks);
       } catch (error) {
         console.error(error);
       }
@@ -29,7 +29,7 @@ export default function Account({ token, user, setUser }) {
       fetchUser();
       fetchReservedBooks();
     }
-  }, []);
+  }, [number]);
 
   return token ? (
     user && (
@@ -44,7 +44,7 @@ export default function Account({ token, user, setUser }) {
           {reservedBooks.length ? (
             reservedBooks.map((book) => {
               return (
-                <div className="reserved-book-card">
+                <div key={book?.id} className="reserved-book-card">
                   <img
                     className="reserved-book-image"
                     src={book?.coverimage}
@@ -53,8 +53,9 @@ export default function Account({ token, user, setUser }) {
                   <p className="reserved-book-title">{book?.title}</p>
                   <div className="delete-button-container">
                     <button
-                      onClick={() => {
-                        deleteBookReservations(token, book.id);
+                      onClick={async () => {
+                        await deleteBookReservations(token, book.id);
+                        setnumber(number + 1);
                       }}
                     >
                       Remove
@@ -70,6 +71,8 @@ export default function Account({ token, user, setUser }) {
       </main>
     )
   ) : (
-    <Link to="/Login">Please login before viewing this page.</Link>
+    <main>
+      <Link to="/Login">Please login before viewing this page.</Link>
+    </main>
   );
 }
