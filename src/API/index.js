@@ -57,3 +57,86 @@ export const getUser = async (token) => {
     console.error(error);
   }
 };
+
+export const getBooks = async () => {
+  try {
+    const response = await fetch(`${API_URl}/books`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const json = await response.json();
+    console.log(json);
+    return json.books;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getBookById = async (bookId) => {
+  try {
+    const response = await fetch(`${API_URl}/books/${bookId}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const json = await response.json();
+    console.log(json);
+    return json;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+//Split into 2 functions?
+export const checkoutOrReturnBook = async (token, bookId) => {
+  try {
+    const response = await fetch(`${API_URl}/books/${bookId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        available: false,
+      }),
+    });
+    const json = await response.json();
+    console.log(json);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getBookReservations = async () => {
+  try {
+    const response = await fetch(`${API_URl}/reservations`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const json = await response.json();
+    console.log(json);
+    return json;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const deleteBookReservations = async (reservationId) => {
+  try {
+    const response = await fetch(`${API_URl}/reservations`, {
+      method: "DELET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const json = await response.json();
+    console.log(json);
+  } catch (error) {
+    console.error(error);
+  }
+};
+

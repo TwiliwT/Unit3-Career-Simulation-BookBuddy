@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getUser } from "../API";
 
-function Account({ token }) {
+export default function Account({ token }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -29,5 +29,3 @@ function Account({ token }) {
     <Link to="/Login">Please login before viewing this page.</Link>
   );
 }
-
-export default Account;
