@@ -16,10 +16,6 @@ export default function SingleBook({ token }) {
       setBook(await getBookById(id));
       console.log(book);
     }
-
-    async function handleCheckout(bookId) {
-      await checkoutBook(token, bookId);
-    }
     fetchBook();
   }, []);
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { registerUser } from "../API";
 import { Link, useNavigate } from "react-router-dom";
+import "../CSS/Register.css";
 
 export default function Register({ setToken }) {
   const [firstName, setFirstName] = useState("");
@@ -24,48 +25,58 @@ export default function Register({ setToken }) {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          First Name:{" "}
-          <input
-            value={firstName}
-            onChange={(event) => {
-              setFirstName(event.target.value);
-            }}
-          ></input>
-        </label>
-        <label>
-          Last Name:{" "}
-          <input
-            value={lastName}
-            onChange={(event) => {
-              setLastName(event.target.value);
-            }}
-          ></input>
-        </label>
-        <label>
-          Email:{" "}
-          <input
-            value={email}
-            onChange={(event) => {
-              setEmail(event.target.value);
-            }}
-          ></input>
-        </label>
-        <label>
-          Password:{" "}
-          <input
-            type="password"
-            value={password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-          ></input>
-        </label>
-        <button>Register</button>
-      </form>
-      <Link to="/Login">Already have an account? Click her to sign in.</Link>
-    </>
+    <main>
+      <div className="register-form-container">
+        <form className="register-form" onSubmit={handleSubmit}>
+          <div>
+            <label>
+              <p className="label-first-name">First Name:</p>
+              <input
+                value={firstName}
+                onChange={(event) => {
+                  setFirstName(event.target.value);
+                }}
+              ></input>
+            </label>
+          </div>
+          <div>
+            <label>
+              <p className="label-last-name">Last Name:</p>
+              <input
+                value={lastName}
+                onChange={(event) => {
+                  setLastName(event.target.value);
+                }}
+              ></input>
+            </label>
+          </div>
+          <div>
+            <label>
+              <p className="label-email">Email:</p>
+              <input
+                value={email}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                }}
+              ></input>
+            </label>
+          </div>
+          <div>
+            <label>
+              <p className="label-password">Password:</p>
+              <input
+                type="password"
+                value={password}
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
+              ></input>
+            </label>
+          </div>
+          <button>Register</button>
+        </form>
+        <Link to="/Login">Already have an account? Click her to sign in.</Link>
+      </div>
+    </main>
   );
 }

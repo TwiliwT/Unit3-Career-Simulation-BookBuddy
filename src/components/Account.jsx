@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getUser } from "../API";
 import { getBookReservations } from "../API";
 import { deleteBookReservations } from "../API";
+import "../CSS/Account.css";
 
 export default function Account({ token, user, setUser }) {
   const [reservedBooks, setReservedBooks] = useState([]);
@@ -24,11 +25,6 @@ export default function Account({ token, user, setUser }) {
         console.error(error);
       }
     }
-
-    async function handleDelete(bookId) {
-      await deleteBookReservations(token, bookId);
-    }
-
     if (token) {
       fetchUser();
       fetchReservedBooks();
@@ -38,30 +34,38 @@ export default function Account({ token, user, setUser }) {
   return token ? (
     user && (
       <main>
-        <div>
-          <h2>
-            {user?.firstname} {user?.lastname} - ({user?.email})
+        <div className="welcome-container">
+          <h2 className="welcome-user">
+            Welcome {user?.firstname} {user?.lastname}
           </h2>
         </div>
-        <div>
-          {reservedBooks.map((book) => {
-            return (
-              <div>
-                <img
-                  src={book.coverimage}
-                  alt={`The cover of ${book?.title}`}
-                />
-                <p>{book.title}</p>
-                <button
-                  onClick={() => {
-                    deleteBookReservations(token, book.id);
-                  }}
-                >
-                  Remove
-                </button>
-              </div>
-            );
-          })}
+        <h2>Reserved Books:</h2>
+        <div className="reserved-books">
+          {reservedBooks.length ? (
+            reservedBooks.map((book) => {
+              return (
+                <div className="reserved-book-card">
+                  <img
+                    className="reserved-book-image"
+                    src={book?.coverimage}
+                    alt={`The cover of ${book?.title}`}
+                  />
+                  <p className="reserved-book-title">{book?.title}</p>
+                  <div className="delete-button-container">
+                    <button
+                      onClick={() => {
+                        deleteBookReservations(token, book.id);
+                      }}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <p>None</p>
+          )}
         </div>
       </main>
     )

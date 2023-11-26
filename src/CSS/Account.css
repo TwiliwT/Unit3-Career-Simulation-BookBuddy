@@ -1,0 +1,27 @@
+.welcome-user {
+  text-align: center;
+}
+
+.reserved-books {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+main > h2 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.reserved-book-image {
+  max-width: 200px;
+  max-height: 350px;
+}
+
+.reserved-book-title {
+    text-align: center;
+}
+
+.delete-button-container {
+    text-align: center;
+}

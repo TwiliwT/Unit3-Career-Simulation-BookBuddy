@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import bookLogo from "./assets/books.png";
+import { Routes, Route} from "react-router-dom";
 import Login from "./components/Login";
 import Account from "./components/Account";
 import Register from "./components/Register";
