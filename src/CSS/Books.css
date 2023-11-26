@@ -1,0 +1,48 @@
+.books-library {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.book-card {
+  position: relative;
+  width: 200px;
+  height: 588px;
+  margin: 10px;
+}
+
+.books-image-container {
+  width: 200px;
+  height: 350px;
+}
+
+/* Why do book covers have to be diffrent sizes :( */
+.books-image {
+  max-width: 200px;
+  max-height: 350px;
+}
+
+.books-title {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.books-author, .books-status {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.books-status {
+  position: absolute;
+  bottom: 0;
+  margin-top: 5px;
+  margin-left: 36px;
+}
+
+.books-description {
+  font-size: 0.8em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}

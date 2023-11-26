@@ -1,0 +1,19 @@
+.single-book-card {
+  text-align: center;
+  margin: auto;
+  width: 700px;
+}
+
+.single-book-image {
+  width: 350px;
+}
+
+.single-book-title {
+  text-align: center;
+  font-size: 1.7em;
+}
+
+.single-book-author {
+  text-align: center;
+  font-size: 1.4em;
+}
