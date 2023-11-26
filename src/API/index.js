@@ -15,7 +15,6 @@ export const registerUser = async (userObj) => {
       }),
     });
     const json = await response.json();
-    console.log(json);
     return json.token;
   } catch (error) {
     console.error(error);
@@ -35,7 +34,6 @@ export const loginUser = async (userObj) => {
       }),
     });
     const json = await response.json();
-    console.log(json);
     return json.token;
   } catch (error) {
     console.error(error);
@@ -51,7 +49,6 @@ export const getUser = async (token) => {
       },
     });
     const json = await response.json();
-    console.log(json);
     return json;
   } catch (error) {
     console.error(error);
@@ -66,7 +63,6 @@ export const getBooks = async () => {
       },
     });
     const json = await response.json();
-    console.log(json);
     return json.books;
   } catch (error) {
     console.error(error);
@@ -81,17 +77,15 @@ export const getBookById = async (bookId) => {
       },
     });
     const json = await response.json();
-    console.log(json);
-    return json;
+    return json.book;
   } catch (error) {
     console.error(error);
   }
 };
 
-//Split into 2 functions?
-export const checkoutOrReturnBook = async (token, bookId) => {
+export const checkoutBook = async (token, bookId) => {
   try {
-    const response = await fetch(`${API_URl}/books/${bookId}`, {
+    await fetch(`${API_URl}/books/${bookId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -101,14 +95,12 @@ export const checkoutOrReturnBook = async (token, bookId) => {
         available: false,
       }),
     });
-    const json = await response.json();
-    console.log(json);
   } catch (error) {
     console.error(error);
   }
 };
 
-export const getBookReservations = async () => {
+export const getBookReservations = async (token) => {
   try {
     const response = await fetch(`${API_URl}/reservations`, {
       headers: {
@@ -117,26 +109,22 @@ export const getBookReservations = async () => {
       },
     });
     const json = await response.json();
-    console.log(json);
-    return json;
+    return json.reservation;
   } catch (error) {
     console.error(error);
   }
 };
 
-export const deleteBookReservations = async (reservationId) => {
+export const deleteBookReservations = async (token, reservationId) => {
   try {
-    const response = await fetch(`${API_URl}/reservations`, {
-      method: "DELET",
+    await fetch(`${API_URl}/reservations/${reservationId}`, {
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
-    const json = await response.json();
-    console.log(json);
   } catch (error) {
     console.error(error);
   }
 };
-
