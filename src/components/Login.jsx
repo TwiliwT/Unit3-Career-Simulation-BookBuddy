@@ -2,7 +2,7 @@ import { useState } from "react";
 import { loginUser } from "../API";
 import { Link, useNavigate } from "react-router-dom";
 
-function Login({ setToken }) {
+export default function Login({ setToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -47,5 +47,3 @@ function Login({ setToken }) {
     </>
   );
 }
-
-export default Login;

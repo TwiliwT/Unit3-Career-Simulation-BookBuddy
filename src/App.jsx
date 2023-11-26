@@ -4,9 +4,11 @@ import bookLogo from "./assets/books.png";
 import Login from "./components/Login";
 import Account from "./components/Account";
 import Register from "./components/Register";
+import { getBooks } from "./API";
 
 function App() {
   const [token, setToken] = useState(null);
+  getBooks();
 
   return (
     <>
