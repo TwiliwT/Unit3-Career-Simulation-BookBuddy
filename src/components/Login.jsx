@@ -28,10 +28,12 @@ export default function Login({ setToken }) {
             <label>
               <p className="label-email">Email:</p>
               <input
+                type="email"
                 value={email}
                 onChange={(event) => {
                   setEmail(event.target.value);
                 }}
+                placeholder="Email"
               ></input>
             </label>
           </div>
@@ -44,15 +46,17 @@ export default function Login({ setToken }) {
                 onChange={(event) => {
                   setPassword(event.target.value);
                 }}
+                placeholder="Password"
               ></input>
             </label>
           </div>
 
           <button>Login</button>
         </form>
-        <Link to="/register">Don't have an account? Click here to sign up.</Link>
+        <Link to="/register">
+          Don't have an account? Click here to sign up.
+        </Link>
       </div>
-      
     </main>
   );
 }

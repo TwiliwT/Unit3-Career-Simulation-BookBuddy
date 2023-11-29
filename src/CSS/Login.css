@@ -1,36 +1,27 @@
-
 form {
-    text-align: center;
-    margin-top: 100px;
+  text-align: center;
+  margin-top: 100px;
 }
 
 .login-form-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.label-email, .label-password {
-    margin: 0px;
-    margin-top: 2px;
-    font-size: 1em;
-}
-
-.login-form > button {
-    margin: 5px;
+.label-email,
+.label-password {
+  margin: 0px;
+  margin-top: 4px;
+  font-size: 1em;
+  float: inline-start;
 }
 
 .login-form {
-    margin-right: 800px;
-    margin-left: 800px;
+  margin-right: 46vw;
+  margin-left: 46vw;
 }
 
-
-
-
-
-
-
-
-
-
+.login-form > button {
+  margin: 5px;
+}

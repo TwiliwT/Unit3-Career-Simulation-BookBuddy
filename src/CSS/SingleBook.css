@@ -1,7 +1,11 @@
 .single-book-card {
   text-align: center;
   margin: auto;
+  padding: 5px;
   width: 700px;
+  background-color: rgb(190, 159, 126);
+  border: 1px solid black;
+  border-radius: 5%;
 }
 
 .single-book-image {
@@ -16,4 +20,18 @@
 .single-book-author {
   text-align: center;
   font-size: 1.4em;
+}
+
+@media (max-width: 440px) {
+  .single-book-image {
+    width: 60%;
+    margin: 20px;
+  }
+
+  .single-book-card {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+  }
 }
