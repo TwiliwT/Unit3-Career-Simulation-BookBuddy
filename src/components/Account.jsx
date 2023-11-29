@@ -44,13 +44,15 @@ export default function Account({ token, user, setUser }) {
           {reservedBooks.length ? (
             reservedBooks.map((book) => {
               return (
-                <div key={book?.id} className="reserved-book-card">
-                  <img
-                    className="reserved-book-image"
-                    src={book?.coverimage}
-                    alt={`The cover of ${book?.title}`}
-                  />
-                  <p className="reserved-book-title">{book?.title}</p>
+                <div key={book?.id} className="reserved-books-card">
+                  <div className="reserved-books-image-container">
+                    <img
+                      className="reserved-books-image"
+                      src={book?.coverimage}
+                      alt={`The cover of ${book?.title}`}
+                    />
+                  </div>
+                  <p className="reserved-books-title">{book?.title}</p>
                   <div className="delete-button-container">
                     <button
                       onClick={async () => {
@@ -65,7 +67,7 @@ export default function Account({ token, user, setUser }) {
               );
             })
           ) : (
-            <p>None</p>
+            <p>None.</p>
           )}
         </div>
       </main>

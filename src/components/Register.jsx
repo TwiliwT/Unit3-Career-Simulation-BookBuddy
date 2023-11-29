@@ -36,6 +36,7 @@ export default function Register({ setToken }) {
                 onChange={(event) => {
                   setFirstName(event.target.value);
                 }}
+                placeholder="First Name"
               ></input>
             </label>
           </div>
@@ -47,6 +48,7 @@ export default function Register({ setToken }) {
                 onChange={(event) => {
                   setLastName(event.target.value);
                 }}
+                placeholder="Last Name"
               ></input>
             </label>
           </div>
@@ -54,10 +56,12 @@ export default function Register({ setToken }) {
             <label>
               <p className="label-email">Email:</p>
               <input
+                type="email"
                 value={email}
                 onChange={(event) => {
                   setEmail(event.target.value);
                 }}
+                placeholder="Email"
               ></input>
             </label>
           </div>
@@ -70,6 +74,7 @@ export default function Register({ setToken }) {
                 onChange={(event) => {
                   setPassword(event.target.value);
                 }}
+                placeholder="Password"
               ></input>
             </label>
           </div>
