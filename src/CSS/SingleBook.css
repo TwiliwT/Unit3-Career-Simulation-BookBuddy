@@ -1,6 +1,7 @@
 .single-book-card {
   text-align: center;
   margin: auto;
+  margin-top: 10px;
   padding: 5px;
   width: 700px;
   background-color: rgb(190, 159, 126);

@@ -8,26 +8,35 @@ export default function Register({ setToken }) {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const userObj = {
       firstName,
       lastName,
       email,
       password,
     };
-    const nextToken = await registerUser(userObj);
-    setToken(nextToken);
-    navigate("/account");
+
+    if (firstName == "" && lastName == "" && email == "" && password == "") {
+      setError("Please fill in all required fields");
+    } else {
+      const nextToken = await registerUser(userObj);
+      setToken(nextToken);
+      setError(null);
+      navigate("/account");
+    }
   };
 
   return (
     <main>
       <div className="register-form-container">
         <form className="register-form" onSubmit={handleSubmit}>
+          {error && <p className="login-error">{error}</p>}
           <div>
             <label>
               <p className="label-first-name">First Name:</p>
@@ -79,8 +88,12 @@ export default function Register({ setToken }) {
             </label>
           </div>
           <button>Register</button>
+          <div>
+            <Link to="/Login">
+              Already have an account? Click her to sign in.
+            </Link>
+          </div>
         </form>
-        <Link to="/Login">Already have an account? Click her to sign in.</Link>
       </div>
     </main>
   );
