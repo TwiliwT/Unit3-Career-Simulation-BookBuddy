@@ -20,8 +20,6 @@ export default function SingleBook({ token }) {
     }
   }
 
-  console.log(bookStatus);
-
   useEffect(() => {
     setBookStatus(book.available);
   }, [book]);
