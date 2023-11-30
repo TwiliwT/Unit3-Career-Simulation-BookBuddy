@@ -7,8 +7,24 @@ import "../CSS/SingleBook.css";
 export default function SingleBook({ token }) {
   const [book, setBook] = useState([]);
   const [number, setnumber] = useState(1);
+  const [bookStatus, setBookStatus] = useState(false);
 
   const { id } = useParams();
+
+  function onClickHandler(bookId) {
+    if (token) {
+      checkoutBook(token, bookId);
+      setnumber(number + 1);
+    } else {
+      alert("You need to be signed in to do that.");
+    }
+  }
+
+  console.log(bookStatus);
+
+  useEffect(() => {
+    setBookStatus(book.available);
+  }, [book]);
 
   useEffect(() => {
     async function fetchBook() {
@@ -35,13 +51,9 @@ export default function SingleBook({ token }) {
         <p className="single-book-status">{`Available: ${book.available}`}</p>
         <button
           onClick={() => {
-            if (token) {
-              checkoutBook(token, book.id);
-              setnumber(number + 1);
-            } else {
-              alert("You need to be signed in to do that.");
-            }
+            onClickHandler(book.id);
           }}
+          disabled={!bookStatus}
         >
           Checkout
         </button>

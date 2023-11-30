@@ -1,6 +1,6 @@
 form {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 75px;
 }
 
 .register-form-container {
@@ -22,6 +22,10 @@ form {
 .register-form {
   margin-right: 46vw;
   margin-left: 46vw;
+  padding: 25px;
+  background-color: bisque;
+  border: 1px solid black;
+  border-radius: 5%;
 }
 
 .register-form > button {

@@ -6,6 +6,7 @@ import "../CSS/Login.css";
 export default function Login({ setToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
@@ -16,14 +17,20 @@ export default function Login({ setToken }) {
       password,
     };
     const nextToken = await loginUser(userObj);
-    setToken(nextToken);
-    navigate("/account");
+    if (nextToken) {
+      setToken(nextToken);
+      navigate("/account");
+      setError(null);
+    } else {
+      setError("Invalid email or password.");
+    }
   };
 
   return (
     <main>
       <div className="login-form-container">
         <form className="login-form" onSubmit={handleSubmit}>
+          {error && <p className="login-error">{error}</p>}
           <div className="email-container">
             <label>
               <p className="label-email">Email:</p>
@@ -50,12 +57,13 @@ export default function Login({ setToken }) {
               ></input>
             </label>
           </div>
-
           <button>Login</button>
+          <div>
+            <Link to="/register">
+              Don't have an account? Click here to sign up.
+            </Link>
+          </div>
         </form>
-        <Link to="/register">
-          Don't have an account? Click here to sign up.
-        </Link>
       </div>
     </main>
   );
