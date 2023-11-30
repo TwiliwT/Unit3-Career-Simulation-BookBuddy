@@ -13,6 +13,7 @@ export default function Account({ token, user, setUser }) {
     async function fetchUser() {
       try {
         const nextUser = await getUser(token);
+        localStorage.setItem("user", JSON.stringify(nextUser));
         setUser(nextUser);
       } catch (error) {
         console.error(error);

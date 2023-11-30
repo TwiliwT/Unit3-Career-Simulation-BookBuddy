@@ -20,6 +20,7 @@ export default function Login({ setToken }) {
     if (nextToken) {
       setToken(nextToken);
       navigate("/account");
+      localStorage.setItem("token", nextToken);
       setError(null);
     } else {
       setError("Invalid email or password.");
